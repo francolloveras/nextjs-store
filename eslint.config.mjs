@@ -1,8 +1,9 @@
-import globals from 'globals'
 import pluginJs from '@eslint/js'
-import tseslint from 'typescript-eslint'
 import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import tailwind from 'eslint-plugin-tailwindcss'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default [
   {
@@ -13,6 +14,7 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReactConfig,
+  ...tailwind.configs['flat/recommended'],
   {
     plugins: {
       'simple-import-sort': simpleImportSort
