@@ -1,8 +1,12 @@
 import clsx from 'clsx'
+import { MdLanguage, MdSearch, MdShoppingCart } from 'react-icons/md'
 import { VscGithubInverted } from 'react-icons/vsc'
 
 const icons = {
-  github: <VscGithubInverted />
+  github: <VscGithubInverted />,
+  cart: <MdShoppingCart />,
+  lang: <MdLanguage />,
+  search: <MdSearch />
 }
 
 export type IconValues = keyof typeof icons
