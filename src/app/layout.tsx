@@ -1,5 +1,6 @@
 import './globals.css'
 
+import clsx from 'clsx'
 import { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={rubik.className}>
+      <body className={clsx('flex flex-col gap-y-4 overflow-x-hidden', [rubik.className])}>
         <Header />
         {children}
         <Footer />
