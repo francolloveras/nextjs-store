@@ -27,7 +27,7 @@ export type SteamResponse = {
         minimum: string
         recommended: string
       }
-      legal_notice: string
+      legal_notice?: string
       ext_user_account_notice: string
       developers: Array<string>
       publishers: Array<string>
@@ -57,10 +57,7 @@ export type SteamResponse = {
         mac: boolean
         linux: boolean
       }
-      metacritic: {
-        score: number
-        url: string
-      }
+      metacritic?: SteamMetacritic
       categories: Array<{
         id: number
         description: string
@@ -113,13 +110,7 @@ export type SteamResponse = {
         notes: null
       }
       ratings: {
-        esrb: {
-          rating: string
-          use_age_gate: string
-          required_age: string
-          descriptors: string
-          interactive_elements: string
-        }
+        esrb?: SteamRaring
       }
     }
   }
@@ -132,4 +123,17 @@ export interface SteamPrice {
   discount_percent: number
   initial_formatted: string
   final_formatted: string
+}
+
+export interface SteamMetacritic {
+  score: number
+  url: string
+}
+
+export interface SteamRaring {
+  rating: string
+  use_age_gate: string
+  required_age: string
+  descriptors: string
+  interactive_elements?: string
 }
