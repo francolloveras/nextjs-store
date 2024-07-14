@@ -128,7 +128,7 @@ export default function Gallery({ media }: GalleryProps) {
         >
           {media.map(({ thumbnail, type }, index) => (
             <li key={index}>
-              <button className="relative w-48" onClick={() => setSlide(index)}>
+              <button className="relative aspect-video h-20" onClick={() => setSlide(index)}>
                 <Image
                   src={thumbnail}
                   width={600}
