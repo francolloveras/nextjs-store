@@ -1,12 +1,22 @@
 import clsx from 'clsx'
-import { MdLanguage, MdSearch, MdShoppingCart } from 'react-icons/md'
+import {
+  MdArrowBackIosNew,
+  MdArrowForwardIos,
+  MdLanguage,
+  MdPlayCircle,
+  MdSearch,
+  MdShoppingCart
+} from 'react-icons/md'
 import { VscGithubInverted } from 'react-icons/vsc'
 
 const icons = {
   github: <VscGithubInverted />,
   cart: <MdShoppingCart />,
   lang: <MdLanguage />,
-  search: <MdSearch />
+  search: <MdSearch />,
+  arrowForward: <MdArrowForwardIos />,
+  arrowBack: <MdArrowBackIosNew />,
+  play: <MdPlayCircle />
 }
 
 export type IconValues = keyof typeof icons
