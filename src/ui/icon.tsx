@@ -1,11 +1,14 @@
 import clsx from 'clsx'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import {
+  MdAdd,
   MdArrowBackIosNew,
   MdArrowForwardIos,
   MdLanguage,
   MdPlayCircle,
   MdSearch,
-  MdShoppingCart
+  MdShoppingCart,
+  MdThumbUp
 } from 'react-icons/md'
 import { VscGithubInverted } from 'react-icons/vsc'
 
@@ -16,7 +19,10 @@ const icons = {
   search: <MdSearch />,
   arrowForward: <MdArrowForwardIos />,
   arrowBack: <MdArrowBackIosNew />,
-  play: <MdPlayCircle />
+  play: <MdPlayCircle />,
+  add: <MdAdd />,
+  like: <MdThumbUp />,
+  externalLink: <FaExternalLinkAlt />
 }
 
 export type IconValues = keyof typeof icons
