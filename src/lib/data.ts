@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { STEAM_API_PARAMS, STEAM_API_URL } from '@/lib/const'
 import { SteamResponse } from '@/lib/type'
 
@@ -24,13 +25,15 @@ export const getGameById = async (gameId: string) => {
   const response = await fetch(STEAM_API_URL + queryParams.toString())
 
   if (!response.ok) {
-    throw new Error(`The response status ${response.status}. Game ID: ${gameId}`)
+    console.log(`The response status ${response.status}. Game ID: ${gameId}`)
+    return null
   }
 
   const result: SteamResponse = await response.json()
 
   if (!result[gameId].success) {
-    throw new Error(`The response was not successful. Game ID: ${gameId}`)
+    console.log(`The response was not successful. Game ID: ${gameId}`)
+    return null
   }
 
   return result[gameId].data
