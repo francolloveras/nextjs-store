@@ -1,8 +1,12 @@
+'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import Typography from '@/ui/typography'
 
 export default function Nav() {
+  const pathname = usePathname()
+
   return (
     <nav>
       <ul className="flex items-center gap-x-6 text-lg text-neutral-400">
@@ -10,7 +14,7 @@ export default function Nav() {
           <Typography
             as={Link}
             href="/"
-            className="transition-colors duration-300 hover:text-white"
+            className={`transition-colors duration-300 hover:text-white ${pathname === '/' ? 'pointer-events-none text-white' : 'text-neutral-400'}`}
           >
             Discover
           </Typography>
@@ -19,7 +23,7 @@ export default function Nav() {
           <Typography
             as={Link}
             href="/games"
-            className="transition-colors duration-300 hover:text-white"
+            className={`transition-colors duration-300 hover:text-white ${pathname === '/games' ? 'pointer-events-none text-white' : 'text-neutral-400'}`}
           >
             Library
           </Typography>
