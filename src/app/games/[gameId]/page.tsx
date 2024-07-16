@@ -114,7 +114,7 @@ export default async function GameDetails({ params }: { params: { gameId: string
               website={game.website}
             />
             {game.metacritic && <MetacriticCard {...game.metacritic} />}
-            {game.ratings.esrb && <RatingCard {...game.ratings.esrb} />}
+            {game.ratings?.esrb && <RatingCard {...game.ratings.esrb} />}
           </header>
         </section>
       </div>

@@ -103,7 +103,7 @@ export type SteamResponse = {
         ids: Array<number>
         notes: null
       }
-      ratings: {
+      ratings?: {
         esrb?: SteamRaring
       }
     }
