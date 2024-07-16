@@ -11,7 +11,7 @@ interface AboutGameProps {
   publishers: string[]
   releaseDate: string
   languages: string
-  website: string
+  website?: string
 }
 
 export default function AboutGame({
@@ -69,21 +69,23 @@ export default function AboutGame({
           <span className="text-neutral-400">Release Date</span>
           <span className="text-right">{releaseDate}</span>
         </li>
-        <li className="flex justify-between py-2">
-          <span className="text-neutral-400">Website</span>
-          <div className="flex items-center hover:underline">
-            <Typography
-              as={Link}
-              href={website}
-              className="max-w-60 truncate text-right"
-              target="_blank"
-              referrerPolicy="no-referrer"
-            >
-              {website.split('://')[1]}
-            </Typography>
-            <Icon icon="externalLink" className="text-xs"></Icon>
-          </div>
-        </li>
+        {website && (
+          <li className="flex justify-between py-2">
+            <span className="text-neutral-400">Website</span>
+            <div className="flex items-center hover:underline">
+              <Typography
+                as={Link}
+                href={website}
+                className="max-w-60 truncate text-right"
+                target="_blank"
+                referrerPolicy="no-referrer"
+              >
+                {website.split('://')[1]}
+              </Typography>
+              <Icon icon="externalLink" className="text-xs"></Icon>
+            </div>
+          </li>
+        )}
       </ul>
     </div>
   )

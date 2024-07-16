@@ -14,7 +14,7 @@ export type SteamResponse = {
       header_image: string
       capsule_image: string
       capsule_imagev5: string
-      website: string
+      website?: string
       pc_requirements: {
         minimum: string
         recommended: string
