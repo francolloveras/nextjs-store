@@ -14,7 +14,10 @@ const rubik = Rubik({
 })
 
 export const metadata: Metadata = {
-  title: 'Nextjs Store by Franco Lloveras',
+  title: {
+    default: 'Nextjs Store by Franco Lloveras',
+    template: '%s | Nextjs Store by Franco Lloveras'
+  },
   description: 'A simple store created using Next.js and Steam API services.'
 }
 

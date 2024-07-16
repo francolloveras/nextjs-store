@@ -1,6 +1,13 @@
 import { getAllGames } from '@/lib/data'
 import GameCard from '@/ui/game-card'
 
+export const metadata = {
+  title: {
+    default: 'Library'
+  },
+  description: 'Collection of all games in the Nextjs Store developed by Franco Lloveras.'
+}
+
 export default async function Games() {
   const allGames = await getAllGames()
 
