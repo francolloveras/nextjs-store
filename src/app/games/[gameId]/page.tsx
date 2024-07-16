@@ -14,7 +14,23 @@ import GamePrice from '@/ui/game-price'
 import GameTagCard from '@/ui/game-tag-card'
 import Typography from '@/ui/typography'
 
-export default async function GameDetails({ params }: { params: { gameId: string } }) {
+interface ParamsProps {
+  params: { gameId: string }
+}
+
+export async function generateMetadata({ params }: ParamsProps) {
+  const game = await getGameById(params.gameId)
+
+  if (!game) {
+    return notFound()
+  }
+
+  return {
+    title: game.name
+  }
+}
+
+export default async function GameDetails({ params }: ParamsProps) {
   const game = await getGameById(params.gameId)
 
   if (!game) {
