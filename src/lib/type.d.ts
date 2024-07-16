@@ -134,6 +134,6 @@ export interface SteamRaring {
   rating: string
   use_age_gate: string
   required_age: string
-  descriptors: string
+  descriptors?: string
   interactive_elements?: string
 }

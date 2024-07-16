@@ -18,11 +18,13 @@ export default function RatingCard({ rating, descriptors, interactive_elements }
       </div>
       <div className="flex flex-col">
         <h4 className="text-lg font-medium">{parseRating.title}</h4>
-        <ul className="mb-2 text-sm text-neutral-400">
-          {descriptors.split('\r\n').map((descriptor) => (
-            <li key={descriptor}>{descriptor}</li>
-          ))}
-        </ul>
+        {descriptors && (
+          <ul className="mb-2 text-sm text-neutral-400">
+            {descriptors.split('\r\n').map((descriptor) => (
+              <li key={descriptor}>{descriptor}</li>
+            ))}
+          </ul>
+        )}
         {interactive_elements && (
           <ul className="text-sm text-neutral-400">
             {interactive_elements.split('\r\n').map((element) => (
