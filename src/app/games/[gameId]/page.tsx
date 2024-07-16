@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import AboutGame from '@/components/about-game'
+import AchievementsCard from '@/components/achievements-card'
 import MetacriticCard from '@/components/metacritic-card'
 import RatingCard from '@/components/rating-card'
 import TextToHtml from '@/components/text-to-html'
@@ -104,6 +105,7 @@ export default async function GameDetails({ params }: { params: { gameId: string
                 {`${game.recommendations.total.toLocaleString()} users recommends this game!`}
               </Typography>
             </div>
+            {game.achievements && <AchievementsCard {...game.achievements} />}
             <AboutGame
               developers={game.developers}
               publishers={game.publishers}

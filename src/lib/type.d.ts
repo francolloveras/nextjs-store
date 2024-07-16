@@ -88,13 +88,7 @@ export type SteamResponse = {
       recommendations: {
         total: number
       }
-      achievements: {
-        total: number
-        highlighted: Array<{
-          name: string
-          path: string
-        }>
-      }
+      achievements?: SteamAchievements
       release_date: {
         coming_soon: boolean
         date: string
@@ -136,4 +130,12 @@ export interface SteamRaring {
   required_age: string
   descriptors?: string
   interactive_elements?: string
+}
+
+export interface SteamAchievements {
+  total: number
+  highlighted: Array<{
+    name: string
+    path: string
+  }>
 }
