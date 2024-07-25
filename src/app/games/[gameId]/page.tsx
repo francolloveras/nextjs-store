@@ -51,7 +51,7 @@ export default async function GameDetails({ params }: ParamsProps) {
   }))
 
   return (
-    <main className="mx-auto mt-12 flex w-2/3 flex-col gap-y-4">
+    <main className="mx-auto mt-12 flex w-2/3 grow flex-col gap-y-4">
       <div className="absolute -top-52 left-0 -z-10 w-screen" aria-disabled>
         <Image
           src={game.background_raw}
