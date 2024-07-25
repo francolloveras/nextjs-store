@@ -5,7 +5,7 @@ import Typography from '@/ui/typography'
 export default function footer() {
   return (
     <footer className="mb-4 flex h-40 flex-col items-center justify-end">
-      <h3 className="mb-1 text-neutral-300">
+      <h3 className="mb-1 text-sm  text-neutral-300 md:text-base">
         Created by Franco Lloveras
         <span className="mx-2">&bull;</span>
         <Typography
@@ -18,10 +18,10 @@ export default function footer() {
             className: 'text-sm'
           }}
         >
-          View code source
+          GitHub
         </Typography>
       </h3>
-      <div className="text-pretty text-center text-sm text-neutral-500">
+      <div className="text-pretty text-center text-xs text-neutral-500 md:text-sm">
         <p>Disclaimer: This page is demonstrative and for educational purposes only.</p>
         <p>
           All game information shown comes from{' '}
