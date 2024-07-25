@@ -22,7 +22,7 @@ export default function GameCard({ id, name, image, price }: GameCardProps) {
         alt={`Picture for ${name}`}
         width={460}
         height={215}
-        className="rounded-xl opacity-80 transition-opacity group-hover:opacity-100"
+        className="aspect-video rounded-xl opacity-80 transition-opacity group-hover:opacity-100"
         aria-disabled
       />
       <div className="mt-2 flex flex-col gap-y-1">
