@@ -4,6 +4,7 @@ import {
   MdAdd,
   MdArrowBackIosNew,
   MdArrowForwardIos,
+  MdHome,
   MdLanguage,
   MdPlayCircle,
   MdSearch,
@@ -13,6 +14,7 @@ import {
 import { VscGithubInverted } from 'react-icons/vsc'
 
 const icons = {
+  home: <MdHome />,
   github: <VscGithubInverted />,
   cart: <MdShoppingCart />,
   lang: <MdLanguage />,
