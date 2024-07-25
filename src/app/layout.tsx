@@ -29,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={clsx('flex min-h-screen flex-col gap-y-4 overflow-x-hidden', [rubik.className])}
+        className={clsx('flex min-h-screen flex-col gap-y-4 overflow-x-hidden overflow-y-scroll', [
+          rubik.className
+        ])}
       >
         <Header />
         {children}
