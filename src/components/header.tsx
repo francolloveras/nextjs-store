@@ -4,10 +4,10 @@ import Nav from '@/components/nav'
 
 export default function Header() {
   return (
-    <header className="flex w-screen items-center justify-between px-96 py-4 transition-colors duration-300 hover:bg-[#121212]/70">
+    <header className="flex items-center justify-between p-4 md:mx-auto md:w-3/4">
       <Link
         href="/"
-        className="text-3xl font-semibold tracking-wide text-neutral-200 hover:text-white"
+        className="text-2xl font-semibold tracking-wide text-neutral-200 hover:text-white md:text-3xl"
       >
         NextJS Store
       </Link>
