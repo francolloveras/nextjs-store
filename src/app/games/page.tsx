@@ -23,8 +23,8 @@ export default async function Games() {
               image={game.header_image}
               price={{
                 discount: game.price_overview?.discount_percent,
-                initialFormatted: game.price_overview?.initial_formatted,
-                finalFormatted: game.price_overview?.final_formatted,
+                originalPrice: game.price_overview?.initial,
+                finalPrice: game.price_overview?.final,
                 itsFree: game.is_free
               }}
             />
