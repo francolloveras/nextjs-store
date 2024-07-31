@@ -1,15 +1,17 @@
+import { formatPrice } from '@/lib/util'
+
 export interface GamePriceProps {
   itsFree: boolean
   discount?: number
-  finalFormatted?: string
-  initialFormatted?: string
+  originalPrice?: number
+  finalPrice?: number
 }
 
 export default function GamePrice({
   itsFree,
   discount,
-  initialFormatted,
-  finalFormatted
+  originalPrice,
+  finalPrice
 }: GamePriceProps) {
   const hasDiscount = typeof discount !== 'undefined' && discount > 0
 
@@ -23,10 +25,12 @@ export default function GamePrice({
       <div className="flex flex-col gap-x-2 leading-none">
         {hasDiscount && (
           <span className="text-right text-xs text-neutral-500 line-through">
-            {initialFormatted}
+            {originalPrice && formatPrice(originalPrice)}
           </span>
         )}
-        <p className="text-green-300">{itsFree ? 'Free game!' : finalFormatted}</p>
+        <p className="text-green-300">
+          {itsFree ? 'Free game!' : finalPrice && formatPrice(finalPrice)}
+        </p>
       </div>
     </div>
   )
