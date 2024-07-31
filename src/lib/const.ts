@@ -1,4 +1,10 @@
-export const STEAM_API_URL = 'https://store.steampowered.com/api/appdetails?' as const
+export const STEAM_API_URL = 'https://store.steampowered.com/api' as const
+
+export const STEAM_API_ENDPOINTS = {
+  GAME_DETAILS: '/appdetails',
+  FEATURED: '/featured'
+} as const
+
 export const STEAM_API_PARAMS = {
   GAME_ID: 'appids',
   LANGUAGE: 'l'

@@ -1,4 +1,4 @@
-export type SteamResponse = {
+export type SteamGameDetailsResponse = {
   [key: string]: {
     success: boolean
     data: {
@@ -138,4 +138,34 @@ export interface SteamAchievements {
     name: string
     path: string
   }>
+}
+
+export interface SteamFeaturesResponse {
+  large_capsules: Array<unknown>
+  featured_win: SteamFeatureItem[]
+  featured_mac: SteamFeatureItem[]
+  featured_linux: SteamFeatureItem[]
+  layout: string
+  status: number
+}
+
+interface SteamFeatureItem {
+  id: number
+  type: number
+  name: string
+  discounted: boolean
+  discount_percent: number
+  original_price?: number
+  final_price: number
+  currency: string
+  large_capsule_image: string
+  small_capsule_image: string
+  windows_available: boolean
+  mac_available: boolean
+  linux_available: boolean
+  streamingvideo_available: boolean
+  header_image: string
+  controller_support?: string
+  discount_expiration?: number
+  headline?: string
 }

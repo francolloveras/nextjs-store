@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import { STEAM_API_PARAMS, STEAM_API_URL } from '@/lib/const'
-import { SteamResponse } from '@/lib/type'
+import { STEAM_API_ENDPOINTS, STEAM_API_PARAMS, STEAM_API_URL } from '@/lib/const'
+import { SteamFeaturesResponse, SteamGameDetailsResponse } from '@/lib/type'
 
 export const steamGameIds = [
   730, 570, 578080, 440, 534380, 72850, 252490, 1091500, 851850, 292030, 1085660, 105600, 521890,
@@ -19,17 +19,24 @@ export const getAllGames = async () => {
 export const getGameById = async (gameId: string) => {
   const queryParams = new URLSearchParams({
     [STEAM_API_PARAMS.GAME_ID]: gameId,
-    [STEAM_API_PARAMS.LANGUAGE]: 'english' // TODO Change the language.
+    [STEAM_API_PARAMS.LANGUAGE]: 'en' // TODO Change the language.
   })
 
-  const response = await fetch(STEAM_API_URL + queryParams.toString())
+  const response = await fetch(
+    STEAM_API_URL + STEAM_API_ENDPOINTS.GAME_DETAILS + '?' + queryParams.toString(),
+    {
+      next: {
+        revalidate: 3600
+      }
+    }
+  )
 
   if (!response.ok) {
     console.log(`The response status ${response.status}. Game ID: ${gameId}`)
     return null
   }
 
-  const result: SteamResponse = await response.json()
+  const result: SteamGameDetailsResponse = await response.json()
 
   if (!result[gameId].success) {
     console.log(`The response was not successful. Game ID: ${gameId}`)
@@ -37,4 +44,28 @@ export const getGameById = async (gameId: string) => {
   }
 
   return result[gameId].data
+}
+
+export const getFeatures = async () => {
+  const queryParams = new URLSearchParams({
+    [STEAM_API_PARAMS.LANGUAGE]: 'en' // TODO Change the language.
+  })
+
+  const response = await fetch(
+    STEAM_API_URL + STEAM_API_ENDPOINTS.FEATURED + '?' + queryParams.toString(),
+    {
+      next: {
+        revalidate: 3600
+      }
+    }
+  )
+
+  if (!response.ok) {
+    console.log(`The response status ${response.status}.`)
+    return null
+  }
+
+  const result: SteamFeaturesResponse = await response.json()
+
+  return result
 }
