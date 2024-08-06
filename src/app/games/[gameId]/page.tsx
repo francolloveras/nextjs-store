@@ -104,8 +104,8 @@ export default async function GameDetails({ params }: ParamsProps) {
             <div className="mx-auto flex w-fit items-center gap-x-6 rounded-md bg-black px-4 py-2.5">
               <GamePrice
                 discount={game.price_overview?.discount_percent}
-                initialFormatted={game.price_overview?.initial_formatted}
-                finalFormatted={game.price_overview?.final_formatted}
+                originalPrice={game.price_overview?.initial}
+                finalPrice={game.price_overview?.final}
                 itsFree={game.is_free}
               />
               <Typography
@@ -116,11 +116,13 @@ export default async function GameDetails({ params }: ParamsProps) {
                 Add to cart
               </Typography>
             </div>
-            <div className="text-center">
-              <Typography as="p" icon="like" className="text-neutral-500">
-                {`${game.recommendations.total.toLocaleString()} users recommends this game!`}
-              </Typography>
-            </div>
+            {game.recommendations && (
+              <div className="text-center">
+                <Typography as="p" icon="like" className="text-neutral-500">
+                  {`${game.recommendations.total.toLocaleString()} users recommends this game!`}
+                </Typography>
+              </div>
+            )}
             {game.achievements && <AchievementsCard {...game.achievements} />}
             <AboutGame
               developers={game.developers}
