@@ -2,7 +2,7 @@ export const STEAM_API_URL = 'https://store.steampowered.com/api' as const
 
 export const STEAM_API_ENDPOINTS = {
   GAME_DETAILS: '/appdetails',
-  FEATURED: '/featured'
+  FEATURED: '/featuredcategories'
 } as const
 
 export const STEAM_API_PARAMS = {

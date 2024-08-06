@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 import { STEAM_API_ENDPOINTS, STEAM_API_PARAMS, STEAM_API_URL } from '@/lib/const'
+import mockFeatures from '@/lib/features-mock.json'
+import mockGames from '@/lib/games-mock.json'
 import { SteamFeaturesResponse, SteamGameDetailsResponse } from '@/lib/type'
 
 export const steamGameIds = [
@@ -13,6 +15,10 @@ export const steamGameIds = [
 ]
 
 export const getAllGames = async () => {
+  if (process.env.NODE_ENV !== 'production') {
+    return mockGames
+  }
+
   return await Promise.all(steamGameIds.map((gameId) => getGameById(gameId.toString())))
 }
 
@@ -47,6 +53,10 @@ export const getGameById = async (gameId: string) => {
 }
 
 export const getFeatures = async () => {
+  if (process.env.NODE_ENV !== 'production') {
+    return mockFeatures
+  }
+
   const queryParams = new URLSearchParams({
     [STEAM_API_PARAMS.LANGUAGE]: 'en' // TODO Change the language.
   })

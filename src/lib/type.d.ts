@@ -85,7 +85,7 @@ export type SteamGameDetailsResponse = {
         }
         highlight: boolean
       }>
-      recommendations: {
+      recommendations?: {
         total: number
       }
       achievements?: SteamAchievements
@@ -141,31 +141,105 @@ export interface SteamAchievements {
 }
 
 export interface SteamFeaturesResponse {
-  large_capsules: Array<unknown>
-  featured_win: SteamFeatureItem[]
-  featured_mac: SteamFeatureItem[]
-  featured_linux: SteamFeatureItem[]
-  layout: string
+  [key: string]: SteamFeatureSpotlight | SteamFeatureDailyDeal
+  specials: SteamFeatureSpecials
+  coming_soon: SteamFeatureComingSoon
+  top_sellers: SteamFeatureTopSellers
+  new_releases: SteamFeatureNewReleases
+  genres: {
+    id: string
+    name: string
+  }
+  trailerslideshow: {
+    id: string
+    name: string
+  }
   status: number
 }
 
-interface SteamFeatureItem {
+export interface SteamFeatureSpotlight {
+  id: 'cat_spotlight'
+  name: 'Spotlights'
+  items: [
+    {
+      name: string
+      header_image: string
+      body: string
+      url: string
+    }
+  ]
+}
+
+export interface SteamFeatureDailyDeal {
+  id: 'cat_dailydeal'
+  name: 'Daily Deal'
+  items: Array<
+    SteamFeatureBasicItem & {
+      original_price: number
+      purchase_package: number
+    }
+  >
+}
+
+export interface SteamFeatureBasicItem {
   id: number
   type: number
   name: string
   discounted: boolean
-  discount_percent: number
-  original_price?: number
-  final_price: number
   currency: string
+  discount_percent: number
+  final_price: number
+  header_image: string
+  discount_expiration?: number | null
+}
+
+export interface SteamFeatureAdvanceItem extends SteamFeatureBasicItem {
   large_capsule_image: string
   small_capsule_image: string
   windows_available: boolean
   mac_available: boolean
   linux_available: boolean
   streamingvideo_available: boolean
-  header_image: string
   controller_support?: string
-  discount_expiration?: number
-  headline?: string
+}
+
+export interface SteamFeatureSpecials {
+  id: 'cat_specials'
+  name: 'Specials'
+  items: Array<
+    SteamFeatureAdvanceItem & {
+      original_price: number
+    }
+  >
+}
+
+export interface SteamFeatureComingSoon {
+  id: 'cat_comingsoon'
+  name: 'Coming Soon'
+  items: Array<
+    SteamFeatureAdvanceItem & {
+      original_price: number | null
+    }
+  >
+}
+
+export interface SteamFeatureTopSellers {
+  id: 'cat_topsellers'
+  name: 'Top Sellers'
+  items: Array<
+    SteamFeatureAdvanceItem & {
+      original_price: number
+    }
+  >
+}
+
+export interface SteamFeatureNewReleases {
+  id: 'cat_newreleases'
+  name: 'New Releases'
+  items: Array<
+    SteamFeatureAdvanceItem & {
+      original_price?: number
+      headline?: string
+    }
+  >
 }
