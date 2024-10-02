@@ -71,20 +71,22 @@ export type SteamGameDetailsResponse = {
         path_thumbnail: string
         path_full: string
       }>
-      movies: Array<{
-        id: number
-        name: string
-        thumbnail: string
-        webm: {
-          '480': string
-          max: string
-        }
-        mp4: {
-          '480': string
-          max: string
-        }
-        highlight: boolean
-      }>
+      movies:
+        | Array<{
+            id: number
+            name: string
+            thumbnail: string
+            webm: {
+              '480': string
+              max: string
+            }
+            mp4: {
+              '480': string
+              max: string
+            }
+            highlight: boolean
+          }>
+        | undefined
       recommendations?: {
         total: number
       }

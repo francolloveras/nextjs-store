@@ -37,12 +37,13 @@ export default async function GameDetails({ params }: ParamsProps) {
     return notFound()
   }
 
-  const movies = game.movies.map(({ id, webm, thumbnail }) => ({
-    id,
-    type: 'video' as 'image' | 'video',
-    src: webm.max,
-    thumbnail
-  }))
+  const movies =
+    game.movies?.map(({ id, webm, thumbnail }) => ({
+      id,
+      type: 'video' as 'image' | 'video',
+      src: webm.max,
+      thumbnail
+    })) ?? []
   const screenshots = game.screenshots.map(({ id, path_full, path_thumbnail }) => ({
     id,
     type: 'image' as 'image' | 'video',
